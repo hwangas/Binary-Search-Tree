@@ -9,9 +9,9 @@ int main()
 	myBST.insert((int)-1);
 	myBST.insert((int)0);
 
-	//myBST.remove(0);
+	myBST.remove(0);
 
 	myBST.print(1);
 
-	//std::cin.get();
+	std::cin.get();
 }

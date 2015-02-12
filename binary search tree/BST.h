@@ -32,7 +32,7 @@ public:
 	void helperInsert(Node<T> *begin, T item)
 	{
 		if (begin->getItem() == item) throw std::exception("duplicate item!");
-		if (begin->getItem() < item) {
+		if (item < begin->getItem()) {
 			if (begin->getL() == nullptr) {
 				begin->setL(new Node<T>(item, nullptr, nullptr));
 			}
@@ -68,16 +68,15 @@ public:
 			begin->getItem() = right->getItem();
 
 			// now delete tmp from T's right subtree and return
-			right = helperRemove(begin, right->getItem());
+			begin->setR(helperRemove(begin->getR(), right->getItem()));
 
 		}
-		else if (begin->getItem() < item) {
-			Node<T> *tmp = begin->getL();
-			tmp = helperRemove(begin->getL(), item);
+		else if (item < begin->getItem()) {
+			begin->setL(helperRemove(begin->getL(), item));
 		}
 		else {
 			Node<T> *tmp = begin->getR();
-			tmp = helperRemove(begin->getR(), item);
+			begin->setR(helperRemove(begin->getR(), item));
 		}
 
 		return begin;
