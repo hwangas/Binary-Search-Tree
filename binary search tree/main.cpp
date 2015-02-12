@@ -3,13 +3,13 @@
 int main()
 {
 	std::cout << "this is to demonstrate the binary search tree" << std::endl;
-	BST<int> myBST;
-	myBST.insert((int) 1);
-	myBST.insert((int) 2);
-	myBST.insert((int)-1);
-	myBST.insert((int)0);
+	BST<double> myBST;
+	myBST.insert(1);
+	myBST.insert(2);
+	myBST.insert(-1);
+	myBST.insert(0);
 
-	myBST.remove(0);
+	std::cout << "avg = " << myBST.getAvg() << std::endl;
 
 	myBST.print(1);
 

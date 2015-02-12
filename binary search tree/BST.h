@@ -50,6 +50,23 @@ public:
 		head = helperRemove(head, item);
 	}
 
+	void getTotal(Node<T> *root, T &total, T &count)
+	{
+		if (root == nullptr) return;
+		total += root->getItem();
+		++count;
+		getTotal(root->getL(), total, count);
+		getTotal(root->getR(), total, count);
+	}
+
+	T getAvg()
+	{
+		T total = 0;
+		T count = 0;
+		getTotal(head, total, count);
+		return (count == 0) ? 0 : total / count;
+	}
+
 	Node<T> *helperRemove(Node<T> *begin, T item) {
 		if (begin == nullptr) return nullptr;
 		if (begin->getItem() == item)
